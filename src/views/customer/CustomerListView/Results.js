@@ -1,3 +1,4 @@
+// ---------------------------Susimapinau visa telefonus ir adresus kad rodytu viename table cell----------------------------->
 // import {
 //   Avatar,
 //   Box,
@@ -182,7 +183,7 @@
 
 // export default Results;
 
-// --------------------------------------------------------
+// ---------------------------Ne iš kart supratau užduoti tai bandžiau viska perkelti į DataGrid iškomentavau ----------------------------->
 // import {
 //   Avatar,
 //   Box,
@@ -364,14 +365,16 @@ function Row({customer, selected, checked , handleSelectOne}) {
       <TableRow className={classes.root} 
        hover
        key={customer.id}
-       selected={selected}>
-        <TableCell>
+       selected={selected}
+     
+       >
+        <TableCell >
           <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-      
-        <TableCell padding="checkbox">
+
+        <TableCell padding="checkbox" >
           <Checkbox
 
             checked={checked}
@@ -414,7 +417,7 @@ function Row({customer, selected, checked , handleSelectOne}) {
      
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={10}  >
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
            
@@ -433,11 +436,6 @@ function Row({customer, selected, checked , handleSelectOne}) {
   );
 }
 
-// Row.propTypes = {
-//   customer: PropTypes.shape({
-//   }).isRequired,
-//   selected: PropTypes.bool
-// };
 
 
 const useStyles = makeStyles(theme => ({
@@ -506,7 +504,9 @@ const Results = ({ className, customers, ...rest }) => {
         <Box minWidth={1050}>
           <Table>
             <TableHead>
-              <TableRow>
+              <TableRow  >
+         
+                <TableCell />
                 <TableCell padding="checkbox">
                   <Checkbox
                     checked={selectedCustomerIds.length === customers.length}
@@ -528,12 +528,12 @@ const Results = ({ className, customers, ...rest }) => {
                 <TableCell>Registration date</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody >
 
               {customers.slice(0, limit).map(customer => (
 
                 <Row customer={customer} selected={selectedCustomerIds.indexOf(customer.id) !== -1} checked={selectedCustomerIds.indexOf(customer.id) !== -1} 
-                handleSelectOne={handleSelectOne}
+                handleSelectOne={handleSelectOne}  key={customer.id} 
                 />
 
               ))}
