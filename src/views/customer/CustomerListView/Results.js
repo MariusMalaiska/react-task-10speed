@@ -422,11 +422,11 @@ function Row({customer, selected, checked , handleSelectOne}) {
             <Box margin={1}>
            
        <h4> Adresses :</h4> {customer.addresses.map(element => 
-          <p> {element.street }, {element.city}, {element.state}, {element.country} </p>)}
+          <p key={customer.id}> {element.street }, {element.city}, {element.state}, {element.country} </p>)}
        <br/>
        <h4> Phones :</h4> 
     {customer.phone.map(element => 
-        <p> {element.type} : {element.number} </p>)}
+        <p key={customer.id}> {element.type} : {element.number} </p>)}
        
             </Box>
           </Collapse>
